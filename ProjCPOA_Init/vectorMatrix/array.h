@@ -8,8 +8,17 @@ template<class T, std::size_t N>
 class Array
 {
 public:
-    Array();
-    Array(T a[N]);
+    // constructor
+    Array(): length(N)
+    {
+        for (std::size_t i = 0; i < N; i++)
+            array[i] = 0;
+    }
+    Array(T a[N]): length(N)
+    {
+        for (std::size_t i = 0; i < N; i++)
+            array[i] = a[i];
+    }
 
     // operator
     T const &operator[](std::size_t n) const
@@ -28,32 +37,18 @@ public:
     }
     bool operator==(const Array<T, N> &a1)
     {
-        for (int i = 0; i < N; i++)
+        for (std::size_t i = 0; i < N; i++)
             if (a1[i] != array[i])
                 return false;
         return true;
     }
 
-private:
+    // getter
+    const T* get_data() const { return array;}
+
+protected:
     T array[N];
     std::size_t length;
 };
-
-template<class T, std::size_t N>
-Array<T, N>::Array()
-    : length(N)
-{
-    for (int i = 0; i < N; i++)
-        array[i] = 0;
-}
-
-template<class T, std::size_t N>
-Array<T, N>::Array(T a[N])
-    : length(N)
-{
-    for (int i = 0; i < N; i++)
-        array[i] = a[i];
-}
-
 
 #endif // ARRAY_H
