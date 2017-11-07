@@ -14,14 +14,14 @@ public:
     // operator
     T const &operator[](std::size_t n) const
     {
-        std::cout << "const T &operator[](std::size_t n) const" << std::endl;
+        // std::cout << "const T &operator[](std::size_t n) const" << std::endl;
         if (n >= N)
             throw std::out_of_range("Array - operator[]");;
         return array[n];
     }
     T &operator[](std::size_t n)
     {
-        std::cout << "T &operator[](std::size_t n)" << std::endl;
+        // std::cout << "T &operator[](std::size_t n)" << std::endl;
         if (n >= N)
             throw std::out_of_range("Array - operator[]");;
         return array[n];
