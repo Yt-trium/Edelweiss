@@ -21,6 +21,10 @@ RenderImg::RenderImg(/*BoundingBox& bb,*/ QWidget *parent ):
   // QQ INIT A AJOUTER ?
 
 {
+    //  A ajouter au debut du constructeur de RenderImg
+    m_timer = new QTimer(this);
+    m_timer->setInterval(20);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(animate()));
 
 	// VOTRE CODE ICI
 

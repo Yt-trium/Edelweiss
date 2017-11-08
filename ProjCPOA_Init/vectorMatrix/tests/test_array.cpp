@@ -1,5 +1,4 @@
 #include <iostream>
-#include <assert.h>
 
 #include "array.h"
 
@@ -28,6 +27,21 @@ TEST(test_array, eq2)
 
     EXPECT_TRUE(a1==a2);
     EXPECT_EQ(tmp2[1],2);
+
+    a1[1]++;
+    a2[1]++;
+
+    EXPECT_TRUE(a1==a2);
+
+    Array<int, 3> a3;
+    a3[0] = 6;
+    a3[1] = 7;
+    a3[2] = 8;
+    a3.swapArray(a2);
+
+    EXPECT_FALSE(a1==a2);
+    EXPECT_TRUE(a1==a3);
+    EXPECT_EQ(tmp2[1],7);
 }
 
 int main(int argc, char **argv)
