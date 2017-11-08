@@ -79,6 +79,50 @@ TEST(test_vector, sub1)
     v4 = v1 - v2;
     EXPECT_TRUE(v3 == v4);
 }
+TEST(test_vector, mul1)
+{
+    Vector<int,2> v1;
+    v1[0] = 2;
+    v1[1] = 3;
+    v1 *= 2;
+    Vector<int,2> v2;
+    v2[0] = 4;
+    v2[1] = 6;
+    EXPECT_TRUE(v1 == v2);
+}
+TEST(test_vector, mul2)
+{
+    Vector<int,2> v1;
+    v1[0] = 2;
+    v1[1] = 3;
+    Vector<int,2> v3 = v1 * 2;
+    Vector<int,2> v2;
+    v2[0] = 4;
+    v2[1] = 6;
+    EXPECT_TRUE(v3 == v2);
+}
+TEST(test_vector, div1)
+{
+    Vector<int,2> v1;
+    v1[0] = 2;
+    v1[1] = 3;
+    Vector<int,2> v2;
+    v2[0] = 4;
+    v2[1] = 6;
+    v2 /= 2;
+    EXPECT_TRUE(v1 == v2);
+}
+TEST(test_vector, div2)
+{
+    Vector<int,2> v1;
+    v1[0] = 2;
+    v1[1] = 3;
+    Vector<int,2> v2;
+    v2[0] = 4;
+    v2[1] = 6;
+    Vector<int,2> v3 = v2 / 2;
+    EXPECT_TRUE(v3 == v1);
+}
 
 int main(int argc, char **argv)
 {

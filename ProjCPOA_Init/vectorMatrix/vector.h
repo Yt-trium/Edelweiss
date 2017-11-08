@@ -24,7 +24,8 @@ public:
     {
         v1 += v2;
         return v1;
-    }Vector&  operator-= (const Vector& v)
+    }
+    Vector&  operator-= (const Vector& v)
     {
         for(std::size_t i = 0;i<N;i++)
         {
@@ -35,6 +36,35 @@ public:
     friend Vector operator- (Vector v1, Vector const &v2)
     {
         v1 -= v2;
+        return v1;
+    }
+    Vector&  operator*= (const T& s)
+    {
+        for(std::size_t i = 0;i<N;i++)
+        {
+            (*this)[i] *= s;
+        }
+        return *this;
+    }
+    friend Vector operator* (Vector v1, T const &s1)
+    {
+        v1 *= s1;
+        return v1;
+    }
+    Vector&  operator/= (const T& s)
+    {
+        if(s == 0)
+            throw std::overflow_error("Vector - operator/ - divide by zero exception");
+
+        for(std::size_t i = 0;i<N;i++)
+        {
+            (*this)[i] /= s;
+        }
+        return *this;
+    }
+    friend Vector operator/ (Vector v1, T const &s1)
+    {
+        v1 /= s1;
         return v1;
     }
 
