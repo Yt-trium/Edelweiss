@@ -7,6 +7,15 @@ Matrix33d::Matrix33d()
             matrix[i][j] = 0.0;
 }
 
+bool operator==(const Matrix33d& m1, const Matrix33d& m2)
+{
+    for (std::size_t i = 0; i < 3; i++)
+        for (std::size_t j = 0; j < 3; j++)
+            if (m1.matrix[i][j] != m2.matrix[i][j])
+                return false;
+    return true;
+}
+
 std::ostream& operator<<(std::ostream& out, const Matrix33d& m)
 {
     out << m.matrix[0][0] << '\t' << m.matrix[0][1] << '\t' << m.matrix[0][2] << std::endl;
@@ -20,6 +29,9 @@ Matrix33d Matrix33d::inverse()
     double det = matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[2][1] * matrix[1][2])
         - matrix[0][1] * (matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0])
         + matrix[0][2] * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0]);
+
+    if (det == 0)
+        throw std::logic_error("Matrix33d - inverse() - det == 0");
 
     double invdet = 1 / det;
 
@@ -35,6 +47,34 @@ Matrix33d Matrix33d::inverse()
     inv[2][2] = (matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1]) * invdet;
 
     return inv;
+}
+
+void Matrix33d::translateM(double x, double y)
+{
+    (*this) = Matrix33d::translate(x, y) * (*this);
+}
+
+void Matrix33d::rotateM(double r)
+{
+    (*this) = Matrix33d::rotate(r) * (*this);
+}
+
+void Matrix33d::scaleM(double sx, double sy)
+{
+    (*this) = Matrix33d::scale(sx, sy) * (*this);
+}
+
+void Matrix33d::applyTransformation(double* x, double* y)
+{
+    Vec3f v1;
+    v1[0] = *x;
+    v1[1] = *y;
+    v1[2] = 1;
+
+    v1 = (*this) * v1;
+
+    *x = v1[0];
+    *y = v1[1];
 }
 
 Matrix33d Matrix33d::identity()

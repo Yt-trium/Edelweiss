@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <cstddef>
+#include <iostream>
 #include <stdexcept>
 
 #include "array.h"
@@ -93,9 +94,25 @@ public:
 
         return v;
     }
+    // IO
+    template <class T2, std::size_t N2>
+    friend std::ostream& operator<<(std::ostream& out, const Vector<T2, N2>& v);
 
 protected:
 };
+
+template <class T, std::size_t N>
+std::ostream& operator<<(std::ostream& out, const Vector<T, N>& v)
+{
+    out << "(";
+
+    for (std::size_t i = 0; i < N - 1; i++)
+        out << v[i] << ",";
+    out << v[N - 1];
+
+    out << ")";
+    return out;
+}
 
 using Vec2f = Vector<float, 2>;
 using Vec3f = Vector<float, 3>;
