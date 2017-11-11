@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "gradientsobel.h"
 #include "image2d.h"
 #include "image2grey.h"
 
@@ -58,6 +59,8 @@ TEST(test_image_grey, subSample)
 
 TEST(gradient_sobel, t1)
 {
+    Image2Grey i1(10, 10);
+    GradientSobel::gradient55(i1);
 }
 
 int main(int argc, char** argv)

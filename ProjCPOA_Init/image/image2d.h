@@ -36,7 +36,7 @@ public:
         delete[] pixels_;
     }
 
-    Image2D(const Image2D& i) = delete;
+    // Image2D(const Image2D& i) = delete;
 
     std::size_t width() const { return w_; }
     std::size_t height() const { return h_; }

@@ -1,8 +1,8 @@
 #ifndef GRADIENTSOBEL_H
 #define GRADIENTSOBEL_H
 
-#include <image2grey.h>
-#include <vector.h>
+#include "image2grey.h"
+#include "vector.h"
 
 class GradientSobel {
 public:
@@ -20,8 +20,8 @@ public:
         -2, -8, -12, -8, -2,
         -1, -4, -6, -4, -1 };
 
-    Image2D<Vec2f> gradient33(const Image2Grey& img_in);
-    Image2D<Vec2f> gradient55(const Image2Grey& img_in);
+    static Image2D<Vec2f> gradient33(const Image2Grey& img_in);
+    static Image2D<Vec2f> gradient55(const Image2Grey& img_in);
 };
 
 #endif // GRADIENTSOBEL_H

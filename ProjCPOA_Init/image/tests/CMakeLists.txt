@@ -8,7 +8,8 @@ add_executable(test_image test_image.cpp)
 
 target_include_directories(test_image PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}
-	${CMAKE_CURRENT_SOURCE_DIR}/..)
+        ${CMAKE_CURRENT_SOURCE_DIR}/..
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../vectorMatrix)
 
 target_link_libraries(test_image image
     debug gtestd optimized gtest
