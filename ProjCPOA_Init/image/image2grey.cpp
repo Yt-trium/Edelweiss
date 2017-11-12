@@ -5,19 +5,19 @@ Image2Grey::Image2Grey(int w, int h)
 {
 }
 
-Image2Grey* Image2Grey::subSample()
+Image2Grey Image2Grey::subSample(Image2Grey img)
 {
-    Image2Grey i(w_ / 2, h_ / 2);
-    for (std::size_t x = 0; x < w_ / 2; x++) {
-        for (std::size_t y = 0; y < h_ / 2; y++) {
-            // (*i)(x, y) = this->pixels_[x * 2 + y * 2 * w_];
-            i(x, y) = (*this)(x * 2, y * 2);
+    std::size_t nx = img.width() / 2;
+    std::size_t ny = img.height() / 2;
+    Image2Grey i(nx, ny);
+    for (std::size_t x = 0; x < nx; x++) {
+        for (std::size_t y = 0; y < ny; y++) {
+            i(x, y) = +img(x * 2, y * 2);
+            // std::cout << +img(x * 2, y * 2) << " ";
         }
     }
-    Image2Grey* iptr;
-    iptr = &i;
 
-    return iptr;
+    return i;
 }
 
 void Image2Grey::save(std::string filename)
@@ -52,7 +52,7 @@ std::ostream& operator<<(std::ostream& out, const Image2Grey& img)
     std::size_t c = 0;
     for (std::size_t x = 0; x < img.width(); x++) {
         for (std::size_t y = 0; y < img.height(); y++) {
-            out << img(x, y) << " ";
+            out << +img(x, y) << " ";
             if (++c > 16) {
                 c = 0;
                 out << std::endl;
@@ -64,7 +64,7 @@ std::ostream& operator<<(std::ostream& out, const Image2Grey& img)
 
     return out;
 }
-// TODO
+
 std::istream& operator>>(std::istream& in, Image2Grey& img)
 {
     std::string tmp;
@@ -77,10 +77,8 @@ std::istream& operator>>(std::istream& in, Image2Grey& img)
     if (tmp == "P2" && tw == img.width() && th == img.height()) {
         for (std::size_t x = 0; x < img.width(); x++) {
             for (std::size_t y = 0; y < img.height(); y++) {
-                // Error here
                 in >> ww;
-                // std::cout << ww << "-";
-                img(x, y) = (unsigned char)ww;
+                img(x, y) = +(unsigned char)ww;
             }
         }
     } else {

@@ -7,15 +7,10 @@
 #include "image2d.h"
 
 class Image2Grey : public Image2D<unsigned char> {
-protected:
-    unsigned char pixels_;
-    std::size_t w_;
-    std::size_t h_;
-
 public:
     Image2Grey(int w, int h);
 
-    Image2Grey* subSample();
+    static Image2Grey subSample(Image2Grey img);
 
     // I/O
     void save(std::string filename);
