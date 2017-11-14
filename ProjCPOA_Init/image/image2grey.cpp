@@ -91,17 +91,10 @@ std::ostream& operator<<(std::ostream& out, const Image2Grey& img)
     out << img.width() << " " << img.height() << std::endl;
     out << 255 << std::endl;
 
-    std::size_t c = 0;
     for (std::size_t x = 0; x < img.width(); x++) {
         for (std::size_t y = 0; y < img.height(); y++) {
-            out << +img(x, y) << " ";
-            if (++c > 16) {
-                c = 0;
-                out << std::endl;
-            }
+            out << +img(x, y) << std::endl;
         }
-        c = 0;
-        out << std::endl;
     }
 
     return out;

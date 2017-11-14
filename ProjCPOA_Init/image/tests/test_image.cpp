@@ -154,6 +154,57 @@ TEST(test_image_grey, smooth)
     delete i2;
 }
 
+TEST(test_image_grey, smooth2)
+{
+    Image2Grey i1(620, 637);
+    i1.load("lapin.pgm");
+    i1.save("lapin1.pgm");
+
+    Image2Grey* i2;
+
+    i2 = Image2Grey::smooth(i1, 1);
+
+    // std::cout << (*i2);
+
+    i2->save("lapin_smooth.pgm");
+    i2 = Image2Grey::smooth(i1, 2);
+    i2->save("lapin_smooth2.pgm");
+    i2 = Image2Grey::smooth(i1, 3);
+    i2->save("lapin_smooth3.pgm");
+
+    delete i2;
+}
+TEST(test_image_grey, threshold2)
+{
+    Image2Grey i1(620, 637);
+    i1.load("lapin.pgm");
+
+    Image2Grey* i2;
+
+    i2 = Image2Grey::threshold(i1, 130);
+
+    // std::cout << (*i2);
+
+    i2->save("lapinthreshold.pgm");
+
+    delete i2;
+}
+TEST(test_image_grey, subSample2)
+{
+    Image2Grey i1(620, 637);
+    i1.load("lapin.pgm");
+
+    Image2Grey* i2;
+
+    i2 = Image2Grey::subSample(i1);
+
+    // std::cout << (*i2);
+
+    i2->save("lapin_subsample.pgm");
+
+    delete i2;
+}
+
 int main(int argc, char** argv)
 {
     testing::InitGoogleTest(&argc, argv);
