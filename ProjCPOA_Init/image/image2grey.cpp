@@ -5,18 +5,60 @@ Image2Grey::Image2Grey(int w, int h)
 {
 }
 
-Image2Grey Image2Grey::subSample(Image2Grey img)
+Image2Grey* Image2Grey::subSample(Image2Grey& img)
 {
     std::size_t nx = img.width() / 2;
     std::size_t ny = img.height() / 2;
-    Image2Grey i(nx, ny);
+    Image2Grey* i = new Image2Grey(nx, ny);
     for (std::size_t x = 0; x < nx; x++) {
         for (std::size_t y = 0; y < ny; y++) {
-            i(x, y) = +img(x * 2, y * 2);
+            (*i)(x, y) = +img(x * 2, y * 2);
             // std::cout << +img(x * 2, y * 2) << " ";
         }
     }
 
+    return i;
+}
+
+Image2Grey* Image2Grey::smooth(Image2Grey& img, int n)
+{
+    unsigned long average = 0;
+
+    std::size_t nx = img.width();
+    std::size_t ny = img.height();
+    Image2Grey* i = new Image2Grey(nx, ny);
+
+    for (std::size_t x = 0; x < nx; x++) {
+        for (std::size_t y = 0; y < ny; y++) {
+            for (int a = -n; a <= n; a++) {
+                for (int b = -n; b <= n; b++) {
+                    if ((x + a) < 0 || (y + b) < 0 || (x + a) > nx || (y + b) > ny)
+                        average += 127;
+                    else
+                        average += img(x + a, y + b);
+                }
+            }
+            (*i)(x, y) = (average / ((2 * n + 1) * (2 * n + 1)));
+            average = 0;
+        }
+    }
+    return i;
+}
+
+Image2Grey* Image2Grey::threshold(Image2Grey& img, unsigned char val)
+{
+    std::size_t nx = img.width();
+    std::size_t ny = img.height();
+    Image2Grey* i = new Image2Grey(nx, ny);
+
+    for (std::size_t x = 0; x < nx; x++) {
+        for (std::size_t y = 0; y < ny; y++) {
+            if (img(x, y) < val)
+                (*i)(x, y) = 0;
+            else
+                (*i)(x, y) = 255;
+        }
+    }
     return i;
 }
 

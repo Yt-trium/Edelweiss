@@ -10,7 +10,9 @@ class Image2Grey : public Image2D<unsigned char> {
 public:
     Image2Grey(int w, int h);
 
-    static Image2Grey subSample(Image2Grey img);
+    static Image2Grey* subSample(Image2Grey& img);
+    static Image2Grey* smooth(Image2Grey& img, int n);
+    static Image2Grey* threshold(Image2Grey& img, unsigned char val);
 
     // I/O
     void save(std::string filename);

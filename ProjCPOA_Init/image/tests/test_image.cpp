@@ -52,18 +52,30 @@ TEST(test_image_grey, load)
     // std::cout << i1 << std::endl;
 }
 
+TEST(test_image_grey, io)
+{
+    Image2Grey i1(10, 10);
+
+    i1.load("img1.pgm");
+    i1.save("img1_.pgm");
+
+    // std::cout << i1 << std::endl;
+}
+
 TEST(test_image_grey, subSample)
 {
     Image2Grey i1(10, 10);
     i1.load("img1.pgm");
 
-    Image2Grey i2(5, 5);
+    Image2Grey* i2;
+
     i2 = Image2Grey::subSample(i1);
 
-    /*
-    std::cout << i1 << std::endl;
-    std::cout << i2 << std::endl;
-    */
+    // std::cout << (*i2);
+
+    i2->save("img1_subsample.pgm");
+
+    delete i2;
 }
 
 TEST(gradient_sobel, t1)
@@ -98,6 +110,48 @@ TEST(test_image_rgb, load)
     i1.load("img1.ppm");
 
     // std::cout << i1 << std::endl;
+}
+
+TEST(test_image_rgb, io)
+{
+    Image2RGB i1(10, 10);
+
+    i1.load("img1.ppm");
+    i1.save("img1_.ppm");
+
+    // std::cout << i1 << std::endl;
+}
+
+TEST(test_image_grey, threshold)
+{
+    Image2Grey i1(10, 10);
+    i1.load("img1.pgm");
+
+    Image2Grey* i2;
+
+    i2 = Image2Grey::threshold(i1, 30);
+
+    // std::cout << (*i2);
+
+    i2->save("img1_threshold.pgm");
+
+    delete i2;
+}
+
+TEST(test_image_grey, smooth)
+{
+    Image2Grey i1(10, 10);
+    i1.load("img1.pgm");
+
+    Image2Grey* i2;
+
+    i2 = Image2Grey::smooth(i1, 1);
+
+    // std::cout << (*i2);
+
+    i2->save("img1_smooth.pgm");
+
+    delete i2;
 }
 
 int main(int argc, char** argv)
