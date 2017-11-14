@@ -8,7 +8,17 @@ class GradientSobel {
 public:
     GradientSobel();
 
+    /**
+     * @brief gradient33
+     * @param img_in
+     * @return
+     */
     static Image2D<Vec2f> gradient33(const Image2Grey& img_in);
+    /**
+     * @brief gradient55
+     * @param img_in
+     * @return
+     */
     static Image2D<Vec2f> gradient55(const Image2Grey& img_in);
 };
 

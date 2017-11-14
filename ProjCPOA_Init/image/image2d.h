@@ -37,20 +37,52 @@ public:
     }
 
     // Image2D(const Image2D& i) = delete;
-
+    /**
+     * @brief width
+     * @return
+     */
     std::size_t width() const { return w_; }
+    /**
+     * @brief height
+     * @return
+     */
     std::size_t height() const { return h_; }
+    /**
+     * @brief data
+     * @return
+     */
     T* data() { return pixels_; }
-
+    /**
+     * @brief operator ()
+     * @param i
+     * @param j
+     * @return
+     */
     T& operator()(int i, int j) { return pixels_[i + j * w_]; }
+    /**
+     * @brief operator ()
+     * @param i
+     * @param j
+     * @return
+     */
     const T& operator()(int i, int j) const { return pixels_[i + j * w_]; }
-
+    /**
+     * @brief swap_pixels
+     * @param im
+     */
     void swap_pixels(Image2D<T>& im)
     {
         assert(im.width() == this->width() && im.height() == this->height());
         std::swap(im.pixels_, this->pixels_);
     }
-
+    /**
+     * @brief crop
+     * @param x1
+     * @param y1
+     * @param x2
+     * @param y2
+     * @return
+     */
     Image2D<T>* crop(std::size_t x1, std::size_t y1, std::size_t x2, std::size_t y2)
     {
         if (x1 > x2 || y1 > y2)

@@ -9,13 +9,23 @@
 
 class Matrix33d {
 public:
+    /**
+     * @brief Matrix33d
+     */
     Matrix33d();
     // operator [][]
-    // proxy class for operator [][]
+    /**
+     * @brief The Matrix33dRow class, proxy class for operator [][]
+     */
     class Matrix33dRow {
         friend class Matrix33d;
 
     public:
+        /**
+         * @brief operator []
+         * @param col
+         * @return
+         */
         double const& operator[](std::size_t col) const
         {
             if (col >= 3)
@@ -23,6 +33,11 @@ public:
 
             return parent.matrix[row][col];
         }
+        /**
+         * @brief operator []
+         * @param col
+         * @return
+         */
         double& operator[](std::size_t col)
         {
             if (col >= 3)
@@ -32,6 +47,11 @@ public:
         }
 
     private:
+        /**
+         * @brief Matrix33dRow
+         * @param parent_
+         * @param row_
+         */
         Matrix33dRow(Matrix33d& parent_, std::size_t row_)
             : parent(parent_)
             , row(row_)
@@ -42,6 +62,11 @@ public:
         std::size_t row;
     };
     // [rows][columns]
+    /**
+     * @brief operator []
+     * @param row
+     * @return
+     */
     Matrix33dRow operator[](std::size_t row)
     {
         if (row >= 3)
@@ -56,8 +81,25 @@ public:
     }
     */
     // operators
+    /**
+     * @brief operator ==
+     * @param m1
+     * @param m2
+     * @return
+     */
     friend bool operator==(const Matrix33d& m1, const Matrix33d& m2);
+    /**
+     * @brief operator <<
+     * @param out
+     * @param m
+     * @return
+     */
     friend std::ostream& operator<<(std::ostream& out, const Matrix33d& m);
+    /**
+     * @brief operator *=
+     * @param m
+     * @return
+     */
     Matrix33d& operator*=(const Matrix33d& m)
     {
         for (std::size_t i = 0; i < 3; i++) {
@@ -69,11 +111,23 @@ public:
         }
         return *this;
     }
+    /**
+     * @brief operator *
+     * @param m1
+     * @param m2
+     * @return
+     */
     friend Matrix33d operator*(Matrix33d m1, Matrix33d const& m2)
     {
         m1 *= m2;
         return m1;
     }
+    /**
+     * @brief operator *
+     * @param m1
+     * @param v1
+     * @return
+     */
     friend Vec3f operator*(Matrix33d const& m1, Vec3f const& v1)
     {
         Vec3f v;
@@ -84,6 +138,12 @@ public:
         }
         return v;
     }
+    /**
+     * @brief operator *
+     * @param m1
+     * @param v1_
+     * @return
+     */
     friend Vec2f operator*(Matrix33d const& m1, Vec2f const& v1_)
     {
         Vec3f v1;
@@ -102,16 +162,60 @@ public:
         return v;
     }
     // public methods
+    /**
+     * @brief inverse
+     * @return
+     */
     Matrix33d inverse();
+    /**
+     * @brief translateM
+     * @param x
+     * @param y
+     */
     void translateM(double x, double y);
+    /**
+     * @brief rotateM
+     * @param r
+     */
     void rotateM(double r);
+    /**
+     * @brief scaleM
+     * @param sx
+     * @param sy
+     */
     void scaleM(double sx, double sy);
+    /**
+     * @brief applyTransformation
+     * @param x
+     * @param y
+     */
     void applyTransformation(double* x, double* y);
 
     // static methods
+    /**
+     * @brief identity
+     * @return
+     */
     static Matrix33d identity();
+    /**
+     * @brief translate
+     * @param x
+     * @param y
+     * @return
+     */
     static Matrix33d translate(double x, double y);
+    /**
+     * @brief rotate
+     * @param r
+     * @return
+     */
     static Matrix33d rotate(double r);
+    /**
+     * @brief scale
+     * @param sx
+     * @param sy
+     * @return
+     */
     static Matrix33d scale(double sx, double sy);
 
 private:

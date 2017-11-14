@@ -21,6 +21,11 @@ public:
     }
 
     // operator
+    /**
+     * @brief operator []
+     * @param n
+     * @return
+     */
     T const& operator[](std::size_t n) const
     {
         // std::cout << "T const &operator[](std::size_t n) const" << std::endl;
@@ -29,6 +34,11 @@ public:
         ;
         return array[n];
     }
+    /**
+     * @brief operator []
+     * @param n
+     * @return
+     */
     T& operator[](std::size_t n)
 
     {
@@ -38,6 +48,11 @@ public:
         ;
         return array[n];
     }
+    /**
+     * @brief operator ==
+     * @param a1
+     * @return
+     */
     bool operator==(const Array<T, N>& a1) const
     {
         for (std::size_t i = 0; i < N; i++)
@@ -45,13 +60,28 @@ public:
                 return false;
         return true;
     }
+
     template <class T2, std::size_t N2>
+    /**
+     * @brief operator ==
+     * @param a1
+     * @param a2
+     * @return
+     */
     friend bool operator==(const Array<T2, N2>& a1, const Array<T2, N2>& a2);
 
     // getter
+    /**
+     * @brief get_data
+     * @return
+     */
     const T* get_data() const { return array; }
 
     // swapper
+    /**
+     * @brief swapArray
+     * @param a
+     */
     void swapArray(Array<T, N>& a) { std::swap(a.array, this->array); }
 
 protected:
