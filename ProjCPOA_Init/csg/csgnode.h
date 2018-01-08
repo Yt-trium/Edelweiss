@@ -25,6 +25,7 @@ class CsgNode {
   std::string label;
   BoundingBox bbox;
 
+ private:
   static int id_cpt;
 };
 
