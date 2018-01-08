@@ -6,7 +6,8 @@
 class CsgPrimitive : public CsgNode
 {
 public:
-    CsgPrimitive();
+    CsgPrimitive(std::string l);
+    CsgPrimitive(const CsgPrimitive& n);
 };
 
 #endif // CSGPRIMITIVE_H

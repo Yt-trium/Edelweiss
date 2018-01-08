@@ -5,7 +5,7 @@ CsgTree::CsgTree()
 
 }
 
-void CsgTree::addPrimitive(CsgPrimitive p)
+void CsgTree::addPrimitive(CsgNode *n)
 {
-    // this->CsgPrimitiveSet.insert(p);
+    this->CsgPrimitiveSet.insert(n);
 }

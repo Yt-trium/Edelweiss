@@ -3,17 +3,17 @@
 
 #include <set>
 
-#include "csgprimitive.h"
+#include "csgnode.h"
 
 class CsgTree
 {
 public:
     CsgTree();
 
-    void addPrimitive(CsgPrimitive p);
+    void addPrimitive(CsgNode *n);
 
 private:
-    std::set<CsgPrimitive> CsgPrimitiveSet;
+    std::set<CsgNode*> CsgPrimitiveSet;
 };
 
 #endif // CSGTREE_H

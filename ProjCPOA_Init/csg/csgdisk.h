@@ -6,7 +6,8 @@
 class CsgDisk : public CsgPrimitive
 {
 public:
-    CsgDisk();
+    CsgDisk(std::string l);
+    CsgDisk(const CsgDisk& n);
 };
 
 #endif // CSGDISK_H
