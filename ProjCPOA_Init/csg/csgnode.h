@@ -3,8 +3,8 @@
 
 #include <string>
 
-#include "../vectorMatrix/vector.h"
 #include "boundingbox.h"
+#include "vector.h"
 
 class CsgNode {
  public:

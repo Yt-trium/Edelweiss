@@ -6,6 +6,8 @@
 
 #include "csgnode.h"
 
+#include "image2rgb.h"
+
 class CsgTree {
  public:
   CsgTree();
@@ -14,6 +16,8 @@ class CsgTree {
   void joinPrimitive(CsgNode *n);
 
   CsgNode *getNode(unsigned int id);
+
+  Image2RGB drawInImage();
 
  private:
   std::set<CsgNode *> CsgTreeSet;

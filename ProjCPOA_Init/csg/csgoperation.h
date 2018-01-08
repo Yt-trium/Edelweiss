@@ -10,7 +10,10 @@ class CsgOperation : public CsgNode {
   CsgOperation(std::string l, CsgOperationType op, CsgNode *n1, CsgNode *n2);
   CsgOperation(const CsgOperation &n);
 
+ protected:
   CsgOperationType type;
+  CsgNode *left;
+  CsgNode *right;
 };
 
 #endif  // CSGOPERATION_H

@@ -16,3 +16,8 @@ CsgNode *CsgTree::getNode(unsigned int id) {
   n = this->CsgTreeMap.find(id)->second;
   return n;
 }
+
+Image2RGB CsgTree::drawInImage() {
+  Image2RGB i(1, 1);
+  return i;
+}
