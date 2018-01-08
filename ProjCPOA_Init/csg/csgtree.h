@@ -1,19 +1,23 @@
 #ifndef CSGTREE_H
 #define CSGTREE_H
 
+#include <map>
 #include <set>
 
 #include "csgnode.h"
 
-class CsgTree
-{
-public:
-    CsgTree();
+class CsgTree {
+ public:
+  CsgTree();
 
-    void addPrimitive(CsgNode *n);
+  void addPrimitive(CsgNode *n);
+  void joinPrimitive(CsgNode *n);
 
-private:
-    std::set<CsgNode*> CsgPrimitiveSet;
+  CsgNode *getNode(unsigned int id);
+
+ private:
+  std::set<CsgNode *> CsgTreeSet;
+  std::map<unsigned int, CsgNode *> CsgTreeMap;
 };
 
-#endif // CSGTREE_H
+#endif  // CSGTREE_H

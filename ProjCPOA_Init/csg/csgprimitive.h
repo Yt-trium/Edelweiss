@@ -3,11 +3,10 @@
 
 #include "csgnode.h"
 
-class CsgPrimitive : public CsgNode
-{
-public:
-    CsgPrimitive(std::string l);
-    CsgPrimitive(const CsgPrimitive& n);
+class CsgPrimitive : public CsgNode {
+ public:
+  CsgPrimitive(std::string l);
+  CsgPrimitive(const CsgPrimitive& n);
 };
 
-#endif // CSGPRIMITIVE_H
+#endif  // CSGPRIMITIVE_H

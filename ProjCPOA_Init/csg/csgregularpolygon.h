@@ -3,11 +3,10 @@
 
 #include "csgprimitive.h"
 
-class CsgRegularPolygon : public CsgPrimitive
-{
-public:
-    CsgRegularPolygon(std::string l);
-    CsgRegularPolygon(const CsgRegularPolygon& n);
+class CsgRegularPolygon : public CsgPrimitive {
+ public:
+  CsgRegularPolygon(std::string l);
+  CsgRegularPolygon(const CsgRegularPolygon& n);
 };
 
-#endif // CSGREGULARPOLYGON_H
+#endif  // CSGREGULARPOLYGON_H

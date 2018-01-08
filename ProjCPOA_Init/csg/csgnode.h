@@ -6,22 +6,26 @@
 #include "../vectorMatrix/vector.h"
 #include "boundingbox.h"
 
-class CsgNode
-{
-public:
-    CsgNode(std::string l);
-    CsgNode(const CsgNode& n);
+class CsgNode {
+ public:
+  CsgNode(std::string l);
+  CsgNode(const CsgNode &n);
 
-    virtual bool Intersect(Vec2f p) = 0;
-    virtual bool intersectBBox(Vec2f v) = 0;
+  virtual bool Intersect(Vec2f p) = 0;
+  virtual bool intersectBBox(Vec2f v) = 0;
 
-protected:
-    CsgNode *parent;
-    unsigned int id;
-    std::string label;
-    BoundingBox bbox;
+  CsgNode *getParent();
+  unsigned int getid();
+  std::string getLabel();
+  BoundingBox getBbox();
 
-    static int id_cpt;
+ protected:
+  CsgNode *parent;
+  unsigned int id;
+  std::string label;
+  BoundingBox bbox;
+
+  static int id_cpt;
 };
 
-#endif // CSGNODE_H
+#endif  // CSGNODE_H

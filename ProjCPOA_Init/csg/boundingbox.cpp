@@ -1,6 +1,3 @@
 #include "boundingbox.h"
 
-BoundingBox::BoundingBox()
-{
-
-}
+BoundingBox::BoundingBox() {}

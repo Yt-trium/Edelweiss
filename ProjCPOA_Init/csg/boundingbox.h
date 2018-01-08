@@ -2,11 +2,11 @@
 #define BOUNDINGBOX_H
 
 class BoundingBox {
-private:
-    float xmin, xmax, ymin, ymax;
+ private:
+  float xmin, xmax, ymin, ymax;
 
-public:
-    BoundingBox();
+ public:
+  BoundingBox();
 };
 
-#endif // BOUNDINGBOX_H
+#endif  // BOUNDINGBOX_H

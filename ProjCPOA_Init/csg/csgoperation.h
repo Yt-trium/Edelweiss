@@ -3,15 +3,14 @@
 
 #include "csgnode.h"
 
-enum CsgOperationType {Union,Intersection,Complement};
+enum CsgOperationType { Union, Intersection, Complement };
 
-class CsgOperation : public CsgNode
-{
-public:
-    CsgOperation(std::string l, CsgOperationType op, CsgNode *n1, CsgNode *n2);
-    CsgOperation(const CsgOperation& n);
+class CsgOperation : public CsgNode {
+ public:
+  CsgOperation(std::string l, CsgOperationType op, CsgNode *n1, CsgNode *n2);
+  CsgOperation(const CsgOperation &n);
 
-    CsgOperationType type;
+  CsgOperationType type;
 };
 
-#endif // CSGOPERATION_H
+#endif  // CSGOPERATION_H

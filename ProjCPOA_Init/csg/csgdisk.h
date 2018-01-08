@@ -3,11 +3,10 @@
 
 #include "csgprimitive.h"
 
-class CsgDisk : public CsgPrimitive
-{
-public:
-    CsgDisk(std::string l);
-    CsgDisk(const CsgDisk& n);
+class CsgDisk : public CsgPrimitive {
+ public:
+  CsgDisk(std::string l);
+  CsgDisk(const CsgDisk& n);
 };
 
-#endif // CSGDISK_H
+#endif  // CSGDISK_H
