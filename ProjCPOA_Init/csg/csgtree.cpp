@@ -8,7 +8,16 @@ void CsgTree::addPrimitive(CsgNode *n) {
 }
 
 void CsgTree::joinPrimitive(CsgNode *n) {
-  // TODO
+  std::set<CsgNode *>::iterator it;
+  CsgOperation *op = static_cast<CsgOperation *>(n);
+
+  it = this->CsgTreeSet.find(op->getRight());
+  this->CsgTreeSet.erase(*it);
+
+  it = this->CsgTreeSet.find(op->getLeft());
+  this->CsgTreeSet.erase(*it);
+
+  this->addPrimitive(n);
 }
 
 CsgNode *CsgTree::getNode(unsigned int id) {

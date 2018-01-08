@@ -13,3 +13,7 @@ CsgOperation::CsgOperation(const CsgOperation &n) : CsgNode(n) {
   this->left = n.left;
   this->right = n.right;
 }
+
+CsgNode *CsgOperation::getLeft() { return this->left; }
+
+CsgNode *CsgOperation::getRight() { return this->right; }

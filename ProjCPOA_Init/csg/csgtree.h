@@ -5,6 +5,7 @@
 #include <set>
 
 #include "csgnode.h"
+#include "csgoperation.h"
 
 #include "image2rgb.h"
 

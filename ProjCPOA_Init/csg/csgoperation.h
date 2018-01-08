@@ -10,6 +10,9 @@ class CsgOperation : public CsgNode {
   CsgOperation(std::string l, CsgOperationType op, CsgNode *n1, CsgNode *n2);
   CsgOperation(const CsgOperation &n);
 
+  CsgNode *getLeft();
+  CsgNode *getRight();
+
  protected:
   CsgOperationType type;
   CsgNode *left;
