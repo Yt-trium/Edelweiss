@@ -26,7 +26,7 @@ CsgNode *CsgTree::getNode(unsigned int id) {
   return n;
 }
 
-Image2RGB CsgTree::drawInImage() {
-  Image2RGB i(1, 1);
+Image2Grey CsgTree::drawInImage() {
+  Image2Grey i(1, 1);
   return i;
 }
