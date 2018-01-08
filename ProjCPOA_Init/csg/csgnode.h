@@ -11,7 +11,7 @@ class CsgNode {
   CsgNode(std::string l);
   CsgNode(const CsgNode &n);
 
-  virtual bool Intersect(Vec2f p) = 0;
+  virtual bool Intersect(Vec2f v) = 0;
   virtual bool intersectBBox(Vec2f v) = 0;
 
   CsgNode *getParent();
