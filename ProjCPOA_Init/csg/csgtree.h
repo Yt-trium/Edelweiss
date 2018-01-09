@@ -7,7 +7,7 @@
 #include "csgnode.h"
 #include "csgoperation.h"
 
-#include "image2rgb.h"
+#include "image2grey.h"
 
 class CsgTree {
  public:
@@ -18,7 +18,7 @@ class CsgTree {
 
   CsgNode *getNode(unsigned int id);
 
-  Image2RGB drawInImage();
+  Image2Grey drawInImage();
 
  private:
   std::set<CsgNode *> CsgTreeSet;
